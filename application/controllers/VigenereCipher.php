@@ -1,8 +1,8 @@
-<?
-	
-	class VigenereCipher 
+<?php
+
+	class VigenereCipher
 	{
-		
+
 		function __construct()
 		{
 			$this->InitTable();
@@ -37,15 +37,15 @@
  			return $plainText;
  		}
 
- 	
+
  		private $charsTable; // Квадрат Виженера
  		private function InitTable() // создание квадрат Виженера
  		{
  			$this->charsTable= [];
- 			for ($i=65; $i < 91; $i++) { 
+ 			for ($i=65; $i < 91; $i++) {
  				$tmp = $i;
  				$chars=[];
- 				for ($j=65; $j <91 ; $j++) { 
+ 				for ($j=65; $j <91 ; $j++) {
  					if($tmp>=91){
  						$tmp = 65;
  					}

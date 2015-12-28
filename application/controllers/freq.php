@@ -56,7 +56,7 @@ class Freq extends CI_Controller {
             $col_size   = count($col);
             $col_values = array_count_values($col);
             $sum_for_ic = 0;
-            var_dump($col_values);
+            //  var_dump($col_values);
             foreach ($col_values as $letter) {
                 $sum_for_ic += $letter * ($letter - 1);
             }
@@ -64,37 +64,44 @@ class Freq extends CI_Controller {
         }
 
         $alphabet = range('A', 'Z');
-        var_dump($alphabet);
+        //  var_dump($alphabet);
         //foreach ($a_text as $col) {
-            foreach ($a_text[1] as $key => $value) {
-                //var_dump($value);
-                $ind = array_search($value, $alphabet);
-                if ($ind != false) {
-                    $keys[] = $ind;
-                }
+        foreach ($a_text[2] as $key => $value) {
+            //var_dump($value);
+            $ind = array_search($value, $alphabet);
+            if ($ind != false) {
+                $keys[] = $ind;
             }
-             $col_values_a = array_count_values($keys);
-             var_dump($col_values_a);
+        }
+        $col_values_a = array_count_values($keys);
+        //var_dump($col_values_a);
 
-             $i = 8;
-             foreach ($col_values_a as $key_lett=>$num_lett){
-                 $new_key = $key_lett - $i;
-                 if ($new_key < 0){
-                      $new_key = 25 +  $new_key;
-                 }
-                 $new_mass[$new_key] = $num_lett;
-             }
+        $i = 5;
 
-       // }
+        foreach ($col_values_a as $key_lett => $num_lett) {
+            $new_key = $key_lett - $i;
+            if ($new_key < 0) {
+                $new_key = 25 + $new_key;
+            }
+            $new_mass[$new_key] = $num_lett;
+        }
 
-        var_dump($new_mass);
+        // }
+        //var_dump($new_mass);
 
         foreach ($new_mass as $key => $value) {
-               $obr[$alphabet[$key]] = $value;
+            $obr[$alphabet[$key]] = $value;
+        }
+        var_dump(array_count_values($a_text[1]));
+        var_dump($obr);
+        $sum = 0;
+        foreach (array_count_values($a_text[2]) as $key => $value) {
+            if (isset($obr[$key])) {
+                $sum += $value * $obr[$key];
             }
-
-            var_dump($obr);
-
+        }
+        $koef = $sum / (count($obr) * count($a_text[2]));
+    var_dump($koef);
 
         var_dump($ic);
         // var_dump($a_text);

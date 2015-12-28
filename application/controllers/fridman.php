@@ -47,6 +47,10 @@ class Fridman extends CI_Controller {
         $a       = $this->shifts($texting, $k       = 1, $seq     = 20);
         var_dump($a);
     }
+	
+	function getShifts(){
+		echo $this->shifts($_POST['text'], $_POST['key_len'],20);
+	}
 
 }
 
